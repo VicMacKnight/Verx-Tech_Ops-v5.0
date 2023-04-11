@@ -1,4 +1,4 @@
-if (dataLayer[3].pagetype === "Carrinho") {
+if (dataLayer[3].pageType === "Carrinho") {
     const productIds = [];
 
     dataLayer[3].product.forEach((product) => {
