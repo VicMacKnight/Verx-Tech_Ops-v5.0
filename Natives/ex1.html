@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Exemplo 1</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		.card {
+			width: 300px;
+			margin: 20px;
+			background-color: #fff;
+			box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+			transition: box-shadow 0.3s ease;
+			cursor: pointer;
+		}
+		.card:hover {
+			box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+		}
+		.card img {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+		}
+		.card h2 {
+			margin: 10px;
+			font-size: 24px;
+			text-align: center;
+			overflow-wrap: break-word;
+		}
+		.card p {
+			margin: 10px;
+			font-size: 16px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Galeria de Fotos</h1>
+	<div class="container"></div>
+	<script>
+		fetch('teste.json')
+			.then(response => response.json())
+			.then(data => {
+				const container = document.querySelector('.container');
+				data.natives.forEach(item => {
+					const card = document.createElement('div');
+					const img = document.createElement('img');
+					const title = document.createElement('h2');
+					card.classList.add('card');
+					img.src = item.urlImage;
+					title.innerText = item.title;
+					card.appendChild(img);
+					card.appendChild(title);
+					container.appendChild(card);
+				});
+			})
+			.catch(error => console.error(error));
+	</script>
+</body>
+</html>
