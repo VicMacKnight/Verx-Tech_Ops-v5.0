@@ -1,6 +1,5 @@
 if (dataLayer[3].pagetype === "Carrinho") {
     const productIds = [];
-    const cartTotal = dataLayer[2].itensSacola;
 
     dataLayer[3].product.forEach((product) => {
         productIds.push(product.classe);
